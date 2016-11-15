@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+
+        <Button
+            android:id="@+id/save_data_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="存入数据"
+            android:textColor="@android:color/black"
+            android:textSize="22sp" />
+
+
+        <Button
+            android:id="@+id/get_data_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:text="读取数据"
+            android:textColor="@android:color/black"
+            android:textSize="22sp" />
+
+        <Button
+            android:id="@+id/clear_data_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:text="清空数据"
+            android:textColor="@android:color/black"
+            android:textSize="22sp" />
+
+        <Button
+            android:id="@+id/check_externalStorage_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:text="检查外部存储设备是否可用"
+            android:textColor="@android:color/black"
+            android:textSize="22sp" />
+
+
+    </LinearLayout>
+</layout>

@@ -1,0 +1,28 @@
+<!--<Button xmlns:android="http://schemas.android.com/apk/res/android"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:text="Button"-->
+    <!--android:textAllCaps="false">-->
+
+<!--</Button>-->
+
+    <!--没有父容器的前提下,给定大小也不起作用-->
+<!--<Button xmlns:android="http://schemas.android.com/apk/res/android"-->
+    <!--android:layout_width="300dp"-->
+    <!--android:layout_height="80dp"-->
+    <!--android:text="Button"-->
+    <!--android:textAllCaps="false">-->
+
+<!--</Button>-->
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <Button
+        android:layout_width="300dp"
+        android:layout_height="80dp"
+        android:text="Button" />
+
+</LinearLayout>

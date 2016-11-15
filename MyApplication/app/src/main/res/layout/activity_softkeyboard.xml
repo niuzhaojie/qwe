@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.example.niuzhaojie.myapplication.view.RelativeLayoutSubClass xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rootLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_alignParentTop="true"
+        android:background="#7fb80e">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="浅绿色部分在屏幕顶部"
+            android:textColor="#843900"
+            android:textSize="25sp" />
+    </RelativeLayout>
+
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:hint="这里是一个输入框"
+        android:textColor="#843900"
+        android:textSize="25sp" />
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_alignParentBottom="true"
+        android:background="#ffc20e">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="浅黄色部分在屏幕底部"
+            android:textColor="#f05b72"
+            android:textSize="25sp" />
+    </RelativeLayout>
+
+</com.example.niuzhaojie.myapplication.view.RelativeLayoutSubClass>

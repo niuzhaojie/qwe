@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<level-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:drawable="@drawable/img_loading_01"
+        android:maxLevel="0"
+        android:minLevel="0" />
+
+    <item
+        android:drawable="@drawable/img_loading_02"
+        android:maxLevel="1"
+        android:minLevel="1" />
+    <item
+        android:drawable="@drawable/img_loading_03"
+        android:maxLevel="2"
+        android:minLevel="2" />
+    <item
+        android:drawable="@drawable/img_loading_04"
+        android:maxLevel="3"
+        android:minLevel="3" />
+    <item
+        android:drawable="@drawable/img_loading_05"
+        android:maxLevel="4"
+        android:minLevel="4" />
+    <item
+        android:drawable="@drawable/img_loading_06"
+        android:maxLevel="5"
+        android:minLevel="5" />
+    <item
+        android:drawable="@drawable/img_loading_07"
+        android:maxLevel="6"
+        android:minLevel="6" />
+    <item
+        android:drawable="@drawable/img_loading_08"
+        android:maxLevel="7"
+        android:minLevel="7" />
+    <item
+        android:drawable="@drawable/img_loading_09"
+        android:maxLevel="8"
+        android:minLevel="8" />
+    <item
+        android:drawable="@drawable/img_loading_10"
+        android:maxLevel="9"
+        android:minLevel="9" />
+    <item
+        android:drawable="@drawable/img_loading_11"
+        android:maxLevel="10"
+        android:minLevel="10" />
+    <item
+        android:drawable="@drawable/img_loading_12"
+        android:maxLevel="11"
+        android:minLevel="11" />
+    <item
+        android:drawable="@drawable/img_loading_13"
+        android:maxLevel="12"
+        android:minLevel="12" />
+    <item
+        android:drawable="@drawable/img_loading_14"
+        android:maxLevel="13"
+        android:minLevel="13" />
+    <item
+        android:drawable="@drawable/img_loading_15"
+        android:maxLevel="14"
+        android:minLevel="14" />
+    <item
+        android:drawable="@drawable/img_loading_16"
+        android:maxLevel="15"
+        android:minLevel="15" />
+    <item
+        android:drawable="@drawable/img_loading_17"
+        android:maxLevel="16"
+        android:minLevel="16" />
+    <item
+        android:drawable="@drawable/img_loading_18"
+        android:maxLevel="17"
+        android:minLevel="17" />
+    <item
+        android:drawable="@drawable/img_loading_19"
+        android:maxLevel="18"
+        android:minLevel="18" />
+    <item
+        android:drawable="@drawable/img_loading_20"
+        android:maxLevel="19"
+        android:minLevel="19" />
+
+</level-list>

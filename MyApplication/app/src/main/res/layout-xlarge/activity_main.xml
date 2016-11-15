@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout xmlns:fresco="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="10dp"
+        tools:context=".activity.MainActivity">
+
+
+        <Button
+            android:id="@+id/fesco_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="5dp"
+            android:gravity="left"
+            android:text="Fesco图片加载框架"
+            android:textAllCaps="false" />
+
+        <Button
+            android:id="@+id/statusBar_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="5dp"
+            android:gravity="left"
+            android:text="状态栏"
+            android:textAllCaps="false" />
+
+        <Button
+            android:id="@+id/dialog_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="left"
+            android:singleLine="true"
+            android:text="dialog/toast/snackbar/notification"
+            android:textAllCaps="false" />
+
+
+        <Button
+            android:id="@+id/screenActivity_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="5dp"
+            android:gravity="left"
+            android:text="Screen相关"
+            android:textAllCaps="false" />
+
+        <Button
+            android:id="@+id/listview_test"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="5dp"
+            android:gravity="left"
+            android:singleLine="true"
+            android:text="ListView test"
+            android:textAllCaps="false" />
+
+        <Button
+            android:id="@+id/btn33"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="5dp"
+            android:gravity="left"
+            android:text="事件分发"
+            android:textAllCaps="false" />
+
+        <Button
+            android:id="@+id/btn34"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="left"
+            android:singleLine="true"
+            android:text="scrollTest"
+            android:textAllCaps="false" />
+
+
+        <Button
+            android:id="@+id/btn41"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="5dp"
+            android:gravity="left"
+            android:text="属性动画"
+            android:textAllCaps="false" />
+
+        <Button
+            android:id="@+id/btn42"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="5dp"
+            android:gravity="left"
+            android:singleLine="true"
+            android:text="异步加载混乱"
+            android:textAllCaps="false" />
+
+        <Button
+            android:id="@+id/btn43"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="5dp"
+            android:gravity="left"
+            android:text="Volley框架"
+            android:textAllCaps="false" />
+
+        <Button
+            android:id="@+id/view_related"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="left"
+            android:singleLine="true"
+            android:text="view相关"
+            android:textAllCaps="false" />
+
+        <Button
+            android:id="@+id/loggerUtils"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="left"
+            android:singleLine="true"
+            android:text="LoggerUtils相关"
+            android:textAllCaps="false" />
+
+        <Button
+            android:id="@+id/roundImageView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="left"
+            android:singleLine="true"
+            android:text="圆角view"
+            android:textAllCaps="false" />
+
+        <Button
+            android:id="@+id/viewPagerView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="left"
+            android:singleLine="true"
+            android:text="ViewPager"
+            android:textAllCaps="false" />
+
+        <Button
+            android:id="@+id/recycleView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="left"
+            android:singleLine="true"
+            android:text="RecycleView"
+            android:textAllCaps="false" />
+
+        <Button
+            android:id="@+id/takePhotoView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="left"
+            android:singleLine="true"
+            android:text="拍照相关"
+            android:textAllCaps="false" />
+
+        <Button
+            android:id="@+id/softKeyBoard"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="left"
+            android:singleLine="true"
+            android:text="软键盘相关"
+            android:textAllCaps="false" />
+
+        <Button
+            android:id="@+id/bottomSheetView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="left"
+            android:singleLine="true"
+            android:text="BottomSheet相关"
+            android:textAllCaps="false" />
+        <Button
+            android:id="@+id/dataBinding"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="left"
+            android:singleLine="true"
+            android:text="dataBinding(数据绑定)"
+            android:textAllCaps="false" />
+
+    </LinearLayout>
+</ScrollView>

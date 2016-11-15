@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="10dp">
+
+
+    <ImageView
+        android:id="@+id/view_img"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:scaleType="fitXY" />
+
+
+    <!--这种方式内存占用多-->
+    <com.example.niuzhaojie.myapplication.view.RoundImageView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:scaleType="centerInside"
+        android:src="@drawable/tu" />
+
+    <!--内存占用少-->
+    <ImageView
+        android:id="@+id/view_img2"
+        android:layout_width="100dp"
+        android:layout_height="100dp" />
+
+    <!--http://blog.csdn.net/lmj623565791/article/details/43752383-->
+</LinearLayout>
