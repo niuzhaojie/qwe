@@ -2,7 +2,6 @@ package com.example.niuzhaojie.myapplication.view.calendar;
 
 import android.content.Context;
 import android.graphics.Color;
-import android.graphics.Rect;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.AttributeSet;
@@ -71,30 +70,30 @@ public class MyCalendar2 extends LinearLayout {
         mContentView = LayoutInflater.from(mContext).inflate(R.layout.view_calendar, this);
         calendarRecycleView = (RecyclerView) mContentView.findViewById(R.id.calendar_recycleView);
         calendarRecycleView.setLayoutManager(mGridLayoutManager);
-        calendarRecycleView.addItemDecoration(new RecyclerView.ItemDecoration() {
-
-            @Override
-            public void getItemOffsets(Rect outRect, View view, RecyclerView parent, RecyclerView.State state) {
-                super.getItemOffsets(outRect, view, parent, state);
-
-                GridLayoutManager.LayoutParams layoutParams = (GridLayoutManager.LayoutParams) view.getLayoutParams();
-                int spanSize = layoutParams.getSpanSize();
-                int spanIndex = layoutParams.getSpanIndex();
-                outRect.top = 20;
-                if (spanSize != mGridLayoutManager.getSpanCount()) {
-                    if (spanIndex == 0) {
-                        outRect.right = 10;
-                    } else if (spanIndex == 6) {
-                        outRect.left = 10;
-                    } else {
-                        outRect.right = 10;
-                        outRect.left = 10;
-
-                    }
-                }
-
-            }
-        });
+//        calendarRecycleView.addItemDecoration(new RecyclerView.ItemDecoration() {
+//
+//            @Override
+//            public void getItemOffsets(Rect outRect, View view, RecyclerView parent, RecyclerView.State state) {
+//                super.getItemOffsets(outRect, view, parent, state);
+//
+//                GridLayoutManager.LayoutParams layoutParams = (GridLayoutManager.LayoutParams) view.getLayoutParams();
+//                int spanSize = layoutParams.getSpanSize();
+//                int spanIndex = layoutParams.getSpanIndex();
+//                outRect.top = 20;
+//                if (spanSize != mGridLayoutManager.getSpanCount()) {
+//                    if (spanIndex == 0) {
+//                        outRect.right = 10;
+//                    } else if (spanIndex == 6) {
+//                        outRect.left = 10;
+//                    } else {
+//                        outRect.right = 10;
+//                        outRect.left = 10;
+//
+//                    }
+//                }
+//
+//            }
+//        });
 
         initAdapter();
 
