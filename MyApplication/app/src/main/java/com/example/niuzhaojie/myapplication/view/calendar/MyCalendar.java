@@ -195,7 +195,7 @@ public class MyCalendar extends LinearLayout {
                     holder.dayTxt.setHeight(mParentWidth / 7);
                     holder.dayTxt.setTextSize(16);
                     holder.dayTxt.setTextColor(Color.parseColor("#000000"));
-                    holder.dayTxt.setSelected(false);
+                    holder.dayTxt.setEnabled(false);
                 } else {
                     if (day.getDate() != null) {
                         Calendar calendar = Calendar.getInstance();
