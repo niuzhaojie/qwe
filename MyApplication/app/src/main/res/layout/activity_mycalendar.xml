@@ -4,13 +4,8 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <com.example.niuzhaojie.myapplication.view.calendar.MyCalendar2
-    android:layout_width="match_parent"
-    android:layout_height="match_parent" />
-
-
-    <!--<CalendarView-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="match_parent" />-->
+    <com.example.niuzhaojie.myapplication.view.calendar.MyCalendar
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 
 </LinearLayout>

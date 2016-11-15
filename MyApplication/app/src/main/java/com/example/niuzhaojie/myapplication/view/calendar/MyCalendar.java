@@ -1,10 +1,11 @@
 package com.example.niuzhaojie.myapplication.view.calendar;
 
 import android.content.Context;
-import android.support.v7.widget.LinearLayoutManager;
+import android.graphics.Color;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.AttributeSet;
-import android.util.Log;
+import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,12 +13,11 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.niuzhaojie.myapplication.R;
-import com.example.niuzhaojie.myapplication.view.DividerItemDecoration;
+import com.example.niuzhaojie.myapplication.model.DayModel;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 
 /**
@@ -26,127 +26,151 @@ import java.util.List;
 
 public class MyCalendar extends LinearLayout {
 
-    private Context mContext;
 
+    private Context mContext;
     private View mContentView;
     private RecyclerView calendarRecycleView;
 
-    private Calendar mCalendar;
+    private GridLayoutManager mGridLayoutManager;
 
-    private List<CalendarMode> list;
+
+    List<DayModel> list = new ArrayList<>();
+
+    private int mParentWidth;
 
 
     public MyCalendar(Context context, AttributeSet attrs) {
         super(context, attrs);
-        mContext = context;
-        initView(context);
-    }
+        this.mContext = context;
 
+        DisplayMetrics metrics = mContext.getResources().getDisplayMetrics();
+        mParentWidth = metrics.widthPixels;
 
-    private void initView(Context context) {
-        mContentView = LayoutInflater.from(context).inflate(R.layout.view_calendar, this);
-        calendarRecycleView = (RecyclerView) mContentView.findViewById(R.id.calendar_recycleView);
-        calendarRecycleView.setLayoutManager(new LinearLayoutManager(context));
-        calendarRecycleView.addItemDecoration(new DividerItemDecoration(context, LinearLayoutManager.VERTICAL));
-        initAdapter();
         initData();
+        initView();
     }
 
+    private void initView() {
 
-    private void initAdapter() {
-
-        MyAdapter adapter = new MyAdapter();
-        calendarRecycleView.setAdapter(adapter);
-
-
-    }
+        mGridLayoutManager = new GridLayoutManager(mContext, 7);
+        mGridLayoutManager.setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup() {
+            @Override
+            public int getSpanSize(int position) {
 
 
-    private void initData() {
-        list = new ArrayList<>();
-        getAllMonth();
+                if (list.get(position).getMonth() != null) {
+                    return 7;
+                } else {
+                    return 1;
+                }
 
+            }
+        });
 
-//        for (int i = 0; i < list.size(); i++) {
+        mContentView = LayoutInflater.from(mContext).inflate(R.layout.view_calendar, this);
+        calendarRecycleView = (RecyclerView) mContentView.findViewById(R.id.calendar_recycleView);
+        calendarRecycleView.setLayoutManager(mGridLayoutManager);
+//        calendarRecycleView.addItemDecoration(new RecyclerView.ItemDecoration() {
 //
-//            for (int i1 = 0; i1 < list.get(i).getDays().size(); i1++) {
+//            @Override
+//            public void getItemOffsets(Rect outRect, View view, RecyclerView parent, RecyclerView.State state) {
+//                super.getItemOffsets(outRect, view, parent, state);
 //
-//                Log.e("tag", list.get(i).getDays().get(i1) + "");
+//                GridLayoutManager.LayoutParams layoutParams = (GridLayoutManager.LayoutParams) view.getLayoutParams();
+//                int spanSize = layoutParams.getSpanSize();
+//                int spanIndex = layoutParams.getSpanIndex();
+//                outRect.top = 20;
+//                if (spanSize != mGridLayoutManager.getSpanCount()) {
+//                    if (spanIndex == 0) {
+//                        outRect.right = 10;
+//                    } else if (spanIndex == 6) {
+//                        outRect.left = 10;
+//                    } else {
+//                        outRect.right = 10;
+//                        outRect.left = 10;
+//
+//                    }
+//                }
 //
 //            }
-//
-//        }
+//        });
+
+        initAdapter();
+
     }
 
+    private void initAdapter() {
+        calendarRecycleView.setAdapter(new MyAdapter());
+    }
 
-    /**
-     * 获取所有的月份
-     */
-    private void getAllMonth() {
+    private void initData() {
 
-        CalendarMode mode;
+        list.clear();
+        Calendar calendar = Calendar.getInstance();
+        calendar.set(Calendar.DAY_OF_MONTH, 1);
 
+
+        DayModel day;
         for (int i = 0; i < 13; i++) {
-            mCalendar = Calendar.getInstance();
-            mCalendar.add(Calendar.MONTH, i);
-            mode = new CalendarMode();
-            mode.setYearAndMonth(mCalendar.get(Calendar.YEAR) + "年" + (mCalendar.get(Calendar.MONTH) + 1) + "月");
+            calendar.add(Calendar.MONTH, i == 0 ? 0 : 1);
 
-            getAllDays(mCalendar, mode);
+            day = new DayModel();
+            day.setMonth(new SimpleDateFormat("yyyy年 MM月").format(calendar.getTime()));
+            day.setDate(calendar.getTime());
+
+            list.add(day);
+
+            checkDataInfo(i);
+            getAllDayInMonth(i);
+        }
+
+
+        for (int i = 0; i < list.size(); i++) {
         }
     }
 
-    /**
-     * 获取该月份下所有的天
-     *
-     * @param calendar
-     * @param mode
-     */
-    private void getAllDays(Calendar calendar, CalendarMode mode) {
-
-        int day = calendar.get(Calendar.DAY_OF_MONTH);
-        int maxDays = calendar.getActualMaximum(Calendar.DAY_OF_MONTH);
-
-
-        mode.getDays().clear();
-        for (int i = 0; i < day; i++) {
-
-            calendar.set(Calendar.DAY_OF_MONTH, i + 1);
-
-            mode.getDays().add(calendar.getTime());
-        }
-
-        for (int i = day; i < maxDays; i++) {
-            calendar.set(Calendar.DAY_OF_MONTH, i + 1);
-
-            mode.getDays().add(calendar.getTime());
-        }
-
-        checkDataInfo(mode);
-
-        list.add(mode);
-    }
 
     /**
-     * 检查补全数据
+     * 补全每月开始时第一天不是星期天的数据
      */
-    private void checkDataInfo(CalendarMode mode) {
+    private void checkDataInfo(int monthDiff) {
+        Calendar calendar = Calendar.getInstance();
+        calendar.add(Calendar.MONTH, monthDiff);
+        calendar.set(Calendar.DAY_OF_MONTH, 1);
 
+        int dayOfWeek = calendar.get(Calendar.DAY_OF_WEEK);
 
-        Calendar tmp = Calendar.getInstance();
-        tmp.setTime(mode.getDays().get(0));
-
-
-        int index = tmp.get(Calendar.DAY_OF_WEEK);
-
-
-//        Log.e("tag", tmp.getTime() + "; " + index);
-        if (index > 1) {
-            for (int i = 1; i < index; i++) {
-                mode.getDays().add(0, null);
+        if (dayOfWeek > 1) {
+            for (int i = 1; i < dayOfWeek; i++) {
+                list.add(new DayModel());
             }
         }
+    }
 
+
+    /**
+     * 添加完该月所有的数据
+     */
+    private void getAllDayInMonth(int monthDiff) {
+
+        Calendar calendar = Calendar.getInstance();
+
+        calendar.add(Calendar.MONTH, monthDiff);
+
+        calendar.set(Calendar.DAY_OF_MONTH, 1);
+
+        int maxDayInMonth = calendar.getActualMaximum(Calendar.DAY_OF_MONTH);
+
+
+        DayModel model;
+        for (int i = 0; i < maxDayInMonth; i++) {
+            calendar.set(Calendar.DAY_OF_MONTH, i + 1);
+
+            model = new DayModel();
+            model.setDate(calendar.getTime());
+
+            list.add(model);
+        }
 
     }
 
@@ -155,15 +179,60 @@ public class MyCalendar extends LinearLayout {
 
         @Override
         public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-
             return new ViewHolder(LayoutInflater.from(mContext).inflate(R.layout.gridview_calendar, parent, false));
         }
-
 
         @Override
         public void onBindViewHolder(ViewHolder holder, int position) {
 
-            setDayTxt(holder, list.get(position));
+            DayModel day = list.get(position);
+
+            if (day != null) {
+                if (day.getMonth() != null) {
+                    holder.dayTxt.setText(day.getMonth());
+
+                    holder.dayTxt.setWidth(mParentWidth);
+                    holder.dayTxt.setHeight(mParentWidth / 7);
+                    holder.dayTxt.setTextSize(16);
+                    holder.dayTxt.setTextColor(Color.parseColor("#000000"));
+                    holder.dayTxt.setSelected(false);
+                } else {
+                    if (day.getDate() != null) {
+                        Calendar calendar = Calendar.getInstance();
+                        if (day.getDate().before(calendar.getTime())) {
+                            holder.dayTxt.setWidth(mParentWidth / 7);
+                            holder.dayTxt.setHeight(mParentWidth / 7);
+
+                            holder.dayTxt.setText(new SimpleDateFormat("dd日").format(day.getDate()));
+                            holder.dayTxt.setTextSize(14);
+                            holder.dayTxt.setTextColor(Color.parseColor("#aaaaaa"));
+
+                            holder.dayTxt.setSelected(false);
+
+                        } else {
+                            holder.dayTxt.setWidth(mParentWidth / 7);
+                            holder.dayTxt.setHeight(mParentWidth / 7);
+
+                            holder.dayTxt.setText(new SimpleDateFormat("dd日").format(day.getDate()));
+                            holder.dayTxt.setTextSize(14);
+                            holder.dayTxt.setTextColor(Color.parseColor("#000000"));
+
+                            holder.dayTxt.setSelected(day.isSelected());
+                            holder.dayTxt.setTag(position);
+                            holder.dayTxt.setOnClickListener(mOnclickListener);
+                        }
+
+
+                    } else {
+                        holder.dayTxt.setText("");
+                        holder.dayTxt.setSelected(false);
+
+                    }
+                }
+            } else {
+                holder.dayTxt.setText("无");
+                holder.dayTxt.setSelected(false);
+            }
         }
 
         @Override
@@ -173,109 +242,35 @@ public class MyCalendar extends LinearLayout {
     }
 
     class ViewHolder extends RecyclerView.ViewHolder {
-        private TextView title_txt;
-        private LinearLayout weekLL1;
-        private LinearLayout weekLL2;
-        private LinearLayout weekLL3;
-        private LinearLayout weekLL4;
-        private LinearLayout weekLL5;
 
-
-        private List<TextView> textViews = new ArrayList<>();
-
+        private TextView dayTxt;
 
         public ViewHolder(View itemView) {
             super(itemView);
-            title_txt = (TextView) itemView.findViewById(R.id.title_txt);
-            weekLL1 = (LinearLayout) itemView.findViewById(R.id.week_ll1);
-            weekLL2 = (LinearLayout) itemView.findViewById(R.id.week_ll2);
-            weekLL3 = (LinearLayout) itemView.findViewById(R.id.week_ll3);
-            weekLL4 = (LinearLayout) itemView.findViewById(R.id.week_ll4);
-            weekLL5 = (LinearLayout) itemView.findViewById(R.id.week_ll5);
-
-            textViews.add((TextView) itemView.findViewById(R.id.day_txt11));
-            textViews.add((TextView) itemView.findViewById(R.id.day_txt12));
-            textViews.add((TextView) itemView.findViewById(R.id.day_txt13));
-            textViews.add((TextView) itemView.findViewById(R.id.day_txt14));
-            textViews.add((TextView) itemView.findViewById(R.id.day_txt15));
-            textViews.add((TextView) itemView.findViewById(R.id.day_txt16));
-            textViews.add((TextView) itemView.findViewById(R.id.day_txt17));
-
-            textViews.add((TextView) itemView.findViewById(R.id.day_txt21));
-            textViews.add((TextView) itemView.findViewById(R.id.day_txt22));
-            textViews.add((TextView) itemView.findViewById(R.id.day_txt23));
-            textViews.add((TextView) itemView.findViewById(R.id.day_txt24));
-            textViews.add((TextView) itemView.findViewById(R.id.day_txt25));
-            textViews.add((TextView) itemView.findViewById(R.id.day_txt26));
-            textViews.add((TextView) itemView.findViewById(R.id.day_txt27));
-
-            textViews.add((TextView) itemView.findViewById(R.id.day_txt31));
-            textViews.add((TextView) itemView.findViewById(R.id.day_txt32));
-            textViews.add((TextView) itemView.findViewById(R.id.day_txt33));
-            textViews.add((TextView) itemView.findViewById(R.id.day_txt34));
-            textViews.add((TextView) itemView.findViewById(R.id.day_txt35));
-            textViews.add((TextView) itemView.findViewById(R.id.day_txt36));
-            textViews.add((TextView) itemView.findViewById(R.id.day_txt37));
-
-            textViews.add((TextView) itemView.findViewById(R.id.day_txt41));
-            textViews.add((TextView) itemView.findViewById(R.id.day_txt42));
-            textViews.add((TextView) itemView.findViewById(R.id.day_txt43));
-            textViews.add((TextView) itemView.findViewById(R.id.day_txt44));
-            textViews.add((TextView) itemView.findViewById(R.id.day_txt45));
-            textViews.add((TextView) itemView.findViewById(R.id.day_txt46));
-            textViews.add((TextView) itemView.findViewById(R.id.day_txt47));
-
-            textViews.add((TextView) itemView.findViewById(R.id.day_txt51));
-            textViews.add((TextView) itemView.findViewById(R.id.day_txt52));
-            textViews.add((TextView) itemView.findViewById(R.id.day_txt53));
-            textViews.add((TextView) itemView.findViewById(R.id.day_txt54));
-            textViews.add((TextView) itemView.findViewById(R.id.day_txt55));
-            textViews.add((TextView) itemView.findViewById(R.id.day_txt56));
-            textViews.add((TextView) itemView.findViewById(R.id.day_txt57));
-
-            textViews.add((TextView) itemView.findViewById(R.id.day_txt61));
-            textViews.add((TextView) itemView.findViewById(R.id.day_txt62));
-            textViews.add((TextView) itemView.findViewById(R.id.day_txt63));
-            textViews.add((TextView) itemView.findViewById(R.id.day_txt64));
-            textViews.add((TextView) itemView.findViewById(R.id.day_txt65));
-            textViews.add((TextView) itemView.findViewById(R.id.day_txt66));
-            textViews.add((TextView) itemView.findViewById(R.id.day_txt67));
-
-
+            dayTxt = (TextView) itemView.findViewById(R.id.day_txt);
         }
-
     }
 
 
-    private void setDayTxt(ViewHolder holder, CalendarMode mode) {
+    private OnClickListener mOnclickListener = new OnClickListener() {
 
-        holder.title_txt.setText(mode.getYearAndMonth());
-        holder.title_txt.setVisibility(View.VISIBLE);
+        @Override
+        public void onClick(View v) {
+            int index = (int) v.getTag();
 
-
-        for (int i = 0; i < mode.getDays().size(); i++) {
-
-            TextView textView = holder.textViews.get(i);
-
-            Date tmp = mode.getDays().get(i);
+            DayModel model = list.get(index);
 
 
-            if (tmp != null) {
-                String str = new SimpleDateFormat("yyyy年MM月dd日").format(tmp);
-
-                Log.e("tag", str + "<<<<<<<<<<<<<<<<<<<<<<<<<");
-            }
-
-
-            if (tmp != null) {
-                textView.setText(new SimpleDateFormat("dd日").format(tmp));
+            if (model.isSelected()) {
+                model.setSelected(false);
             } else {
-                textView.setText("");
+                model.setSelected(true);
             }
-            textView.setVisibility(View.VISIBLE);
+
+            list.set(index, model);
+            calendarRecycleView.getAdapter().notifyDataSetChanged();
         }
+    };
 
-
-    }
 
 }
