@@ -223,5 +223,14 @@
             android:text="自定义一个Calendar"
             android:textAllCaps="false" />
 
+        <Button
+            android:id="@+id/aidl_test_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="left"
+            android:singleLine="true"
+            android:text="AIDL测试"
+            android:textAllCaps="false" />
+
     </LinearLayout>
 </ScrollView>

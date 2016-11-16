@@ -68,6 +68,7 @@
         </activity>
         <activity android:name=".activity.DataStorageRelatedActivity" />
         <activity android:name=".activity.MyCalendarActivity" />
+        <activity android:name=".activity.AIDLTestActivity" />
     </application>
 
 </manifest>
