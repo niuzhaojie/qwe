@@ -4,13 +4,16 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:baselineAligned="false"
+        android:orientation="horizontal"
+        android:weightSum="3">
 
 
         <Button
             android:id="@+id/startTest_btn"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:gravity="center"
             android:text="test start"
             android:textColor="@android:color/black"
@@ -18,8 +21,9 @@
 
         <Button
             android:id="@+id/addPerson_btn"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:gravity="center"
             android:text="添加person"
             android:textColor="@android:color/black"
