@@ -18,7 +18,7 @@
             android:layout_height="wrap_content"
             android:layout_marginRight="5dp"
             android:gravity="left"
-            android:text="Fesco图片加载框架"
+            android:text="@string/fesco"
             android:textAllCaps="false" />
 
         <Button

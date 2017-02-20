@@ -3,11 +3,13 @@ package com.example.niuzhaojie.myapplication.activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 
+import com.example.niuzhaojie.myapplication.Interface.IUser;
 import com.example.niuzhaojie.myapplication.R;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements IUser{
 
 
     @Override
@@ -198,7 +200,24 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        start();
+
     }
 
 
+    @Override
+    public void login() {
+        Log.e("111", "2222");
+    }
+
+    @Override
+    public void userInfo() {
+        Log.e("111", "3333");
+
+    }
+
+    @Override
+    public void start() {
+        Log.e("111", "1111");
+    }
 }
