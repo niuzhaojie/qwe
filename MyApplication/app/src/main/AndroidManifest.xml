@@ -9,6 +9,7 @@
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.CALL_PHONE" />
     <uses-permission android:name="com.android.alarm.permission.SET_ALARM" />
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
 
     <application
         android:name=".MyApplication"
@@ -69,6 +70,7 @@
         <activity android:name=".activity.DataStorageRelatedActivity" />
         <activity android:name=".activity.MyCalendarActivity" />
         <activity android:name=".activity.AIDLTestActivity" />
+        <activity android:name=".activity.PermissionsRelatedActivity" />
     </application>
 
 </manifest>

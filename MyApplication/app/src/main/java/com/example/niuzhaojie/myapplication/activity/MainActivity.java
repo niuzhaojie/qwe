@@ -1,6 +1,7 @@
 package com.example.niuzhaojie.myapplication.activity;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -8,8 +9,10 @@ import android.view.View;
 
 import com.example.niuzhaojie.myapplication.Interface.IUser;
 import com.example.niuzhaojie.myapplication.R;
+import com.example.niuzhaojie.myapplication.utils.ToastUtils;
+import com.example.niuzhaojie.myapplication.utils.Utils;
 
-public class MainActivity extends AppCompatActivity implements IUser{
+public class MainActivity extends AppCompatActivity implements IUser {
 
 
     @Override
@@ -200,10 +203,34 @@ public class MainActivity extends AppCompatActivity implements IUser{
             }
         });
 
+        findViewById(R.id.permissions_related_btn).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, PermissionsRelatedActivity.class));
+            }
+        });
+
         start();
 
     }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+//        Intent intent = new Intent(Intent.ACTION_DIAL, Uri.parse("te:19299293"));
+//        if (Utils.IsIntentSafe(intent, this)) {
+//            startActivity(intent);
+//        } else {
+//            ToastUtils.showToast(this, "MDZZ-------->>妈的智障");
+//        }
+
+
+//        Intent intent = new Intent(Intent.ACTION_MEDIA_SHARED);
+//        Utils.ResolveActivity(intent, this);
+
+
+    }
 
     @Override
     public void login() {
